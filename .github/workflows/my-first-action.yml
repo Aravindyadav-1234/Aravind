@@ -16,6 +16,10 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
+    - name: Use secret credentials
+        run: |
+          echo "Using credentials"
+          echo "${{ secrets.my_secret_key }}" > secret.txt
 
     - name: Install dependencies
       run: |
