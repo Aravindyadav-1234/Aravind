@@ -2,20 +2,25 @@ name: My First GitHub Actions
 
 on: [push]
 
+permissions:
+  contents: write  # Required for push/pull
+  issues: read     # If interacting with issues
+  pull-requests: write  # Required for managing PRs
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        python-version: [3.9,3.10]
+        python-version: [3.8, 3.9]
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
 
@@ -33,3 +38,4 @@ jobs:
         run: |
           cd src
           python -m pytest addition.py
+
