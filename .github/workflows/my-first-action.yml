@@ -22,7 +22,7 @@ jobs:
       - name: Use secret credentials
         run: |
           echo "Using credentials"
-          echo "${{ secrets.my_secret_key }}" > secret.txt
+          echo "${{ secrets.MY_SECRET_KEY }}" > secret.txt
 
       - name: Install dependencies
         run: |
