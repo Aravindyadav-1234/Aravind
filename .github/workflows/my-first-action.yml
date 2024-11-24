@@ -2,11 +2,6 @@ name: My First GitHub Actions
 
 on: [push]
 
-permissions:
-  contents: write  # Required for push/pull
-  issues: read     # If interacting with issues
-  pull-requests: write  # Required for managing PRs
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -36,6 +31,9 @@ jobs:
 
       - name: Run tests
         run: |
-          cd src
+          # Ensure 'src' directory exists and contains files
+          ls -l  # List contents of the current directory for debugging
+          cd src  # Change directory to 'src'
           python -m pytest addition.py
+
 
